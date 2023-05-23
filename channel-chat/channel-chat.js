@@ -54,7 +54,6 @@ let currentChannel = null;
 const channelsRef = ref(database, 'channels');
 onValue(channelsRef, snap => {
     const user = auth.currentUser;
-    currentUserUid = user.uid;
     if (!snap || !snap.val()) return;
     let channelsArray = Object.values(snap.val());
     const chatList = document.getElementById('chatList');

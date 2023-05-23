@@ -95,6 +95,7 @@ button {
 .channel-chat {
     display: flex;
     justify-content: space-between;
+    flex-grow: 1;
 }
 
 #chatList {
@@ -114,7 +115,8 @@ button {
 .user-chat-name {
     font-size:x-large;
     padding: 0 0 5px 0;
-    margin: 0.25em 0 0 0 ;
+    margin: 0.25em 1 0 0 ;
+    width: 20vw;
 }
 .leave-channel-btn {
     background-color: red;
@@ -124,7 +126,7 @@ button {
     margin: 5px 5px 0 10px;
     background-color:#ffffffdd
 }
-.user-chat:hover {
+.user-chat-name:hover {
     cursor: pointer;
 }
 

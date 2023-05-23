@@ -64,26 +64,31 @@ onValue(channelsRef, snap => {
         newChatEle.classList.add('user-chat');
         newChatEle.classList.add('channel-chat');
         const userChatNameEle = document.createElement('div');
+        const leaveChannelBtn = document.createElement('button');
         userChatNameEle.addEventListener('click', () => {
             const userChannelRef = ref(database, `users/${user.uid}/channels`);
+            let chatSnap;
             onValue(userChannelRef, (snap) => {
-                if (!snap || !snap.val() || !Object.values(snap.val()).includes(x.uniqueName)) {
-                    showChannelJoinPage(x.title, x.uniqueName);
-                } else {
-                    fetchChatHistory(x.title, x.uniqueName);
-                }
+                chatSnap = JSON.parse(JSON.stringify(snap));
             })
+            if (!chatSnap || !chatSnap.val() || !Object.values(chatSnap.val()).includes(x.uniqueName)) {
+                showChannelJoinPage(x.title, x.uniqueName);
+            } else {
+                fetchChatHistory(x.title, x.uniqueName);
+            }
         });
 
         userChatNameEle.classList.add('user-chat-name');
         userChatNameEle.dataset.uniquename = x.uniqueName;
         userChatNameEle.innerHTML = x.title;
 
-        const leaveChannelBtn = document.createElement('button');
         leaveChannelBtn.className = 'leave-channel-btn';
         leaveChannelBtn.innerHTML = 'Leave';
         leaveChannelBtn.dataset.uniquename = x.uniqueName;
         leaveChannelBtn.onclick = (x) => {
+            messageBar.style.display = 'none';
+            const userOrChatName = document.querySelector('.chat-header');
+            userOrChatName.innerHTML = '';
             const user = auth.currentUser;
             const userChannels = ref(database, `users/${user.uid}/channels`);
             const entry = {};
@@ -100,13 +105,14 @@ onValue(channelsRef, snap => {
 });
 
 //in case of user has not joined the channel
-const showChannelJoinPage = function (channelName) {
-    const answer = confirm(`You are not a member of this channel. Click 'OK' to join the channel`);
-    if (answer) {
+const showChannelJoinPage = function (title, channelName) {
+    // const answer = confirm(`You are not a member of this channel. Click 'OK' to join the channel`);
+    // if (answer) {
         const user = auth.currentUser;
         const userChannelsRef = ref(database, `users/${user.uid}/channels`);
         push(userChannelsRef, channelName);
-    }
+        fetchChatHistory(title, channelName);
+    // }
 }
 
 //fetches channel chat history

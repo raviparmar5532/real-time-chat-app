@@ -22,7 +22,7 @@ const database = getDatabase(app);
 // if user is not signd in / token expired
 auth.onAuthStateChanged((user) => {
     if (!user) {
-        window.location.href = '../login/login.html';
+        window.location.href = 'index.html';
     }
 });
 
@@ -32,7 +32,7 @@ logoutBtn.addEventListener('click', () => {
     auth.signOut()
     .then(() => {
         // Redirect to index.html after successful logout
-        window.location.href = '../login/login.html';
+        window.location.href = 'index.html';
     })
     .catch((error) => {
         console.error('Logout error:', error);

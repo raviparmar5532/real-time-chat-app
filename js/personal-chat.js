@@ -23,7 +23,7 @@ const database = getDatabase(app);
 // if user is not signd in / token expired
 auth.onAuthStateChanged((user) => {
     if (!user) {
-        window.location.href = '../login/login.html';
+        window.location.href = 'index.html';
     }
 });
 
@@ -33,7 +33,7 @@ logoutBtn.addEventListener('click', () => {
     auth.signOut()
         .then(() => {
             // Redirect to index.html after successful logout
-            window.location.href = '../login/login.html';
+            window.location.href = 'index.html';
         })
         .catch((error) => {
             console.error('Logout error:', error);
@@ -76,7 +76,7 @@ onValue(users, snap => {
                 receiverName.innerHTML = '';
                 const receiverNameText = document.createElement('div');
                 receiverNameText.id = 'current-chat-name';
-                receiverNameText.innerHTML = user.displayName;
+                receiverNameText.innerHTML = usr.displayName;
                 receiverName.append(receiverNameText);
 
                 //fetching messages

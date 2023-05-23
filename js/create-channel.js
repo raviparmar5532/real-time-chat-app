@@ -23,7 +23,7 @@ const database = getDatabase(app);
 // if user is not signd in / token expired
 auth.onAuthStateChanged((user) => {
     if (!user) {
-        window.location.href = '../login/login.html';
+        window.location.href = 'index.html';
     }
 });
 let channelForm = document.getElementById('channelForm');
@@ -51,7 +51,7 @@ channelForm.addEventListener('submit', (e) => {
         }
         else if(snap.val() != null && Object.keys(snap.val()).includes(uniqueName)) {
             alert('Channel name already exists');
-            window.top.location.href = '../create-channel/create-channel.html'; 
+            window.top.location.href = 'create-channel.html'; 
         } else {
             const entry = {};
             entry[uniqueName] = channelObject;
@@ -67,7 +67,7 @@ channelForm.addEventListener('submit', (e) => {
             channelTitleInput.value = '';
             channelUniqueNameInput.value = '';
             channelDescriptionInput.value = '';
-            window.top.location.href = '../channel-chat/channel-chat.html';
+            window.top.location.href = 'channel-chat.html';
         }
     });
 

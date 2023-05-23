@@ -37,7 +37,7 @@ loginBtn.addEventListener('click', () => {
             get(users).then(snap => {
 
                 if(snap.val()!=null && Object.keys(snap.val()).includes(user.uid)) {
-                    window.location.href = "../channel-chat/channel-chat.html"
+                    window.location.href = "channel-chat.html"
                     return;
                 }
                 const userObj = {
@@ -49,7 +49,7 @@ loginBtn.addEventListener('click', () => {
                 entry[user.uid] = userObj;
                 console.log(entry);
                 update(usersRef, entry);
-                window.location.href = "../personal-chat/personal-chat.html"
+                window.location.href = "personal-chat.html"
             })
         })
         .catch((error) => {

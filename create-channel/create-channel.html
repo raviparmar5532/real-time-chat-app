@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Channel</title>
+  <link rel="stylesheet" href="create-channel.css">
+</head>
+
+<body>
+  <div class="frame-content">
+    <h1>Create Channel</h1>
+    <form id="channelForm" method="post">
+      <div>
+        <label for="channelTitle">Title of the Channel:</label>
+        <input type="text" id="channelTitle" required>
+      </div>
+      <div>
+        <label for="channelUniqueName">Unique Channel Name:</label>
+        <input type="text" id="channelUniqueName" required>
+      </div>
+      <div>
+        <label for="channelDescription">Channel Description:</label>
+        <textarea id="channelDescription" rows="4"></textarea>
+      </div>
+      <button type="submit">Create Channel</button>
+    </form>
+  </div>
+
+  <script src="create-channel.js" type="module"></script>
+</body>
+
+</html>

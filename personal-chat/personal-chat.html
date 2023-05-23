@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>One to one chat</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div id="logoutbar">
+                <button id="logoutBtn">Logout</button>
+                <span id="username"></span>
+            </div>
+            <ul id="chatList"> <!-- channel chat list -->
+            </ul>
+            <div class="create-buttons-container">
+                <button id="showChannelsBtn" class="create-button" onclick="window.top.location.href = '../channel-chat/channel-chat.html'">Show Channels</button>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">
+            </div>
+            <div class="chat-body">
+            </div>
+            <div class="chat-footer">
+                <input id = 'messageInput' type="text" placeholder="Type your message..." />
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+        <div class="frame-container" id="frameContainer">
+        </div>
+    </div>
+    <script src="personal-chat.js" type="module"></script>
+</body>
+</html>

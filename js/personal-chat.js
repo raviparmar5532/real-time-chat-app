@@ -111,12 +111,12 @@ onValue(users, snap => {
             deleteChatBtn.dataset.uid = usr.uid;
             deleteChatBtn.onclick = (x) => {
                 const user = auth.currentUser;
-                const chats = ref(database, `users/${user.uid}/chats`);
+                const chats = ref(database, `users/${user.uid}/chats/${usr.uid}`);
                 const entry = {};
                 entry[x.target.dataset.uid] = null;
                 set(chats, entry);
                 //receiver side
-                const chats2 = ref(database, `users/${usr.uid}/chats`);
+                const chats2 = ref(database, `users/${usr.uid}/chats/${user.uid}`);
                 const entry2 = {};
                 entry[user.uid] = null;
                 set(chats2, entry2);
